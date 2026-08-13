@@ -1,0 +1,8 @@
+{
+  "name": "Remix Garments ERP Production Planning Board",
+  "description": "Production planning board with 14-day line Gantt schedule, 6-stage cumulative Kanban workflow, live WIP tracking, capacity calculator, and PHP/MySQL ERP source files.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
