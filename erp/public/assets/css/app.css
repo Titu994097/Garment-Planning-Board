@@ -1,0 +1,99 @@
+/* Garment & Textile ERP — UI theme */
+:root {
+    --erp-sidebar-w: 260px;
+    --erp-sidebar-bg: #0f1b2d;
+    --erp-sidebar-fg: #aab6c8;
+    --erp-sidebar-active: #2f6fed;
+    --erp-bg: #f3f5f9;
+    --erp-card-bg: #fff;
+    --erp-border: #e6e9ef;
+    --erp-radius: .75rem;
+}
+[data-bs-theme="dark"] {
+    --erp-bg: #0b1220;
+    --erp-card-bg: #111a2b;
+    --erp-border: #1f2a3d;
+}
+body { background: var(--erp-bg); font-size: .925rem; }
+
+.erp-shell { display: flex; min-height: 100vh; }
+.erp-sidebar {
+    width: var(--erp-sidebar-w); background: var(--erp-sidebar-bg); color: var(--erp-sidebar-fg);
+    position: fixed; inset: 0 auto 0 0; overflow-y: auto; z-index: 1040; transition: transform .2s ease;
+}
+.erp-brand { display: flex; align-items: center; gap: .6rem; padding: 1.1rem 1.25rem; color: #fff; text-decoration: none; font-size: 1.2rem; border-bottom: 1px solid rgba(255,255,255,.06); }
+.erp-brand i { color: var(--erp-sidebar-active); font-size: 1.5rem; }
+.erp-nav { padding: .5rem 0 2rem; }
+.erp-nav a { display: flex; align-items: center; gap: .75rem; padding: .5rem 1.25rem; color: var(--erp-sidebar-fg); text-decoration: none; border-left: 3px solid transparent; }
+.erp-nav a:hover { color: #fff; background: rgba(255,255,255,.04); }
+.erp-nav a.active { color: #fff; background: rgba(47,111,237,.15); border-left-color: var(--erp-sidebar-active); }
+.erp-nav-module { padding: 1rem 1.25rem .25rem; color: #fff; font-weight: 600; font-size: .8rem; text-transform: uppercase; letter-spacing: .06em; }
+.erp-nav-group { padding: .75rem 1.25rem .25rem; font-size: .7rem; text-transform: uppercase; letter-spacing: .08em; opacity: .55; }
+
+.erp-main { flex: 1; margin-left: var(--erp-sidebar-w); display: flex; flex-direction: column; min-width: 0; transition: margin .2s ease; }
+.erp-topbar { position: sticky; top: 0; z-index: 1030; display: flex; align-items: center; padding: .6rem 1.5rem; background: var(--erp-card-bg); border-bottom: 1px solid var(--erp-border); }
+.erp-topbar .form-select { min-width: 240px; }
+.erp-content { padding: 1.5rem; flex: 1; }
+.erp-footer { padding: .75rem 1.5rem; font-size: .8rem; color: var(--bs-secondary-color); }
+.erp-avatar { width: 28px; height: 28px; border-radius: 50%; background: var(--erp-sidebar-active); color: #fff; display: inline-flex; align-items: center; justify-content: center; font-weight: 600; font-size: .8rem; }
+
+body.sidebar-collapsed .erp-sidebar { transform: translateX(-100%); }
+body.sidebar-collapsed .erp-main { margin-left: 0; }
+@media (max-width: 991.98px) {
+    .erp-sidebar { transform: translateX(-100%); }
+    .erp-main { margin-left: 0; }
+    body.sidebar-open .erp-sidebar { transform: none; box-shadow: 0 0 40px rgba(0,0,0,.4); }
+    .erp-content { padding: 1rem; }
+}
+
+.erp-page-header { display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.25rem; }
+.erp-card { background: var(--erp-card-bg); border: 1px solid var(--erp-border); border-radius: var(--erp-radius); box-shadow: 0 1px 2px rgba(16,24,40,.04); }
+.erp-card > .card-header { background: transparent; font-weight: 600; border-bottom-color: var(--erp-border); padding: .85rem 1.1rem; }
+.erp-card > .card-footer { background: transparent; border-top-color: var(--erp-border); }
+.erp-section-title { margin: .75rem 0 0; padding-bottom: .4rem; border-bottom: 1px dashed var(--erp-border); font-size: .8rem; text-transform: uppercase; letter-spacing: .06em; color: var(--bs-secondary-color); }
+
+.erp-kpi { display: flex; align-items: center; gap: .9rem; padding: 1rem; background: var(--erp-card-bg); border: 1px solid var(--erp-border); border-radius: var(--erp-radius); color: inherit; height: 100%; transition: transform .15s, box-shadow .15s; }
+.erp-kpi:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(16,24,40,.08); }
+.erp-kpi-icon { width: 44px; height: 44px; border-radius: .6rem; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; flex-shrink: 0; }
+.erp-kpi-value { font-size: 1.35rem; font-weight: 700; line-height: 1.1; }
+.erp-kpi-label { font-size: .75rem; color: var(--bs-secondary-color); }
+
+.erp-date { width: 44px; text-align: center; border: 1px solid var(--erp-border); border-radius: .5rem; line-height: 1.1; padding: .25rem 0; }
+.erp-date span { display: block; font-weight: 700; font-size: 1.05rem; }
+.erp-date small { font-size: .65rem; text-transform: uppercase; color: var(--bs-secondary-color); }
+.erp-activity { display: flex; align-items: center; gap: .5rem; padding: .35rem 0; border-bottom: 1px dashed var(--erp-border); }
+
+.badge.erp-status-active { background: var(--bs-success-bg-subtle); color: var(--bs-success-text-emphasis); }
+.badge.erp-status-inactive, .badge.erp-status-closed { background: var(--bs-secondary-bg-subtle); color: var(--bs-secondary-text-emphasis); }
+.badge.erp-status-suspended, .badge.erp-status-locked { background: var(--bs-danger-bg-subtle); color: var(--bs-danger-text-emphasis); }
+.badge.erp-status-maintenance, .badge.erp-status-open { background: var(--bs-warning-bg-subtle); color: var(--bs-warning-text-emphasis); }
+
+.erp-scroll { max-height: 420px; overflow-y: auto; }
+.erp-matrix td, .erp-matrix th { padding-left: 1rem; }
+.erp-sticky-actions { position: sticky; bottom: 0; padding: .75rem; background: var(--erp-card-bg); border-top: 1px solid var(--erp-border); text-align: right; border-radius: var(--erp-radius); }
+
+.erp-step { padding: .75rem; border: 1px solid var(--erp-border); border-radius: .6rem; margin-bottom: .6rem; cursor: grab; }
+.erp-step.dragging { opacity: .5; }
+.erp-step-no { display: inline-flex; width: 28px; height: 28px; border-radius: 50%; background: var(--erp-sidebar-active); color: #fff; align-items: center; justify-content: center; font-weight: 600; }
+
+.erp-stepper { position: relative; }
+.erp-stepper-item { display: flex; gap: 1rem; padding-bottom: 1.25rem; position: relative; }
+.erp-stepper-item:not(:last-child)::before { content: ""; position: absolute; left: 15px; top: 32px; bottom: 0; width: 2px; background: var(--erp-border); }
+.erp-stepper-dot { width: 32px; height: 32px; border-radius: 50%; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-weight: 600; background: var(--bs-secondary-bg); border: 2px solid var(--erp-border); }
+.is-approved .erp-stepper-dot { background: var(--bs-success); color: #fff; border-color: var(--bs-success); }
+.is-rejected .erp-stepper-dot { background: var(--bs-danger); color: #fff; border-color: var(--bs-danger); }
+.is-returned .erp-stepper-dot { background: var(--bs-info); color: #fff; border-color: var(--bs-info); }
+.is-current .erp-stepper-dot { border-color: var(--bs-primary); color: var(--bs-primary); box-shadow: 0 0 0 4px rgba(47,111,237,.15); }
+
+.erp-sigpad { width: 100%; height: 180px; border: 2px dashed var(--erp-border); border-radius: .6rem; background: #fff; touch-action: none; cursor: crosshair; }
+.erp-signature-img { max-width: 100%; max-height: 160px; background: #fff; border: 1px solid var(--erp-border); border-radius: .5rem; padding: .5rem; }
+
+.erp-auth-bg { background: var(--erp-bg); }
+.erp-auth { display: flex; min-height: 100vh; }
+.erp-auth-panel { flex: 1; align-items: center; padding: 4rem; color: #fff; background: linear-gradient(135deg, #0f1b2d 0%, #1d3b75 60%, #2f6fed 100%); }
+.erp-auth-form { flex: 1; display: flex; align-items: center; justify-content: center; padding: 2rem; }
+
+table.dataTable td { vertical-align: middle; }
+.select2-container { width: 100% !important; }
+.erp-kpi > div:last-child { min-width: 0; }
+@media (max-width: 575.98px) { .erp-kpi { padding: .75rem; gap: .6rem; } .erp-kpi-value { font-size: 1.1rem; } .erp-kpi-icon { width: 36px; height: 36px; font-size: 1.1rem; } }
